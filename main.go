@@ -2,14 +2,36 @@ package main
 
 import (
 	"fmt"
+	// "golang.org/x/text/message"
 )
 
 func main() {
-	age := 20
-	yearsUntilAdult, yearsUntilDrinking, yearsUntilCarRental := yearsUntilEvent(age)
+	test(messageToSend{
+		message:     "Thanks for signing up",
+		phoneNumber: 9080809790,
+	})
 
-	fmt.Printf("mano firstNames are %v, %v, %v", yearsUntilAdult, yearsUntilDrinking, yearsUntilCarRental)
+	test(messageToSend{
+		message:     "Thanks for logging in",
+		phoneNumber: 9080808790,
+	})
 
+	test(messageToSend{
+		message:     "Thanks for loging out",
+		phoneNumber: 9080879790,
+	})
+
+}
+
+// struct keys can hold any type
+type messageToSend struct {
+	message     string
+	phoneNumber int
+}
+
+func test(m messageToSend) {
+	fmt.Printf("Sending mesage: '%s' to: %v\n", m.message, m.phoneNumber)
+	fmt.Println("===============================")
 }
 
 // Naked Return
