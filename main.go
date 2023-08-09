@@ -24,9 +24,35 @@ func main() {
 }
 
 // struct keys can hold any type
+// The fields of a struct can be accessed using the dot . operator
+// myNo = messageToSend{}
+// myNo.phoneNumber
 type messageToSend struct {
 	message     string
 	phoneNumber int
+	sender      user
+	recipient   user
+}
+
+type user struct {
+	name   string
+	number int
+}
+
+func canSendMessage(mToSend messageToSend) bool {
+	if mToSend.sender.name == "" {
+		return false
+	}
+	if mToSend.recipient.name == "" {
+		return false
+	}
+	if mToSend.sender.number == 0 {
+		return false
+	}
+	if mToSend.recipient.number == 0 {
+		return false
+	}
+	return true
 }
 
 func test(m messageToSend) {
