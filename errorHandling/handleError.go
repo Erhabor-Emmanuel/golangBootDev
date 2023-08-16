@@ -1,4 +1,4 @@
-package golangbootdev
+package errorhandling
 
 import "fmt"
 
