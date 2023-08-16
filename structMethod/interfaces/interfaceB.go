@@ -12,15 +12,24 @@ func getExpenseReport(e expense) (string, float64) {
 
 	//which is an instance of a shape.
 	//"ok" is bool that is true if e was of type email
-	em, ok := e.(email)
-	if ok {
-		return em.toAddress, em.cost()
+	// em, ok := e.(email)
+	// if ok {
+	// 	return em.toAddress, em.cost()
+	// }
+	// s, ok := e.(sms)
+	// if ok {
+	// 	return s.toPhoneNumber, s.cost()
+	// }
+	// return "", 0.0
+	switch v := e.(type) {
+	case email:
+		return v.toAddress, v.cost()
+	case sms:
+		return v.toPhoneNumber, v.cost()
+	default:
+		return "", 0.0
 	}
-	s, ok := e.(sms)
-	if ok {
-		return s.toPhoneNumber, s.cost()
-	}
-	return "", 0
+
 }
 
 func (e email) cost() float64 {
@@ -58,3 +67,11 @@ type sms struct {
 }
 
 type invalid struct{}
+
+func estimatedYearlyCost(e expense, averageMessagePerYear int) float64 {
+	return e.cost() * float64(averageMessagePerYear)
+}
+
+// func test(e expense){
+// 	address, cost := getExpenseReport()
+// }
