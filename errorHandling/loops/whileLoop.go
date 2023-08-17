@@ -36,6 +36,17 @@ func printPrimes(max int) {
 		if n%2 == 0 {
 			continue
 		}
+		isPrime := true
+		for i := 3; i*i < n+1; i++ {
+			if n%i == 0 {
+				isPrime = false
+				break
+			}
+		}
+		if !isPrime {
+			continue
+		}
+		fmt.Println(n)
 	}
 }
 
