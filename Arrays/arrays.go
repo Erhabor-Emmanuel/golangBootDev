@@ -30,3 +30,10 @@ func send(name string, doneAt int) {
 		}
 	}
 }
+
+func main() {
+	send("Bob", 0)
+	send("Alice", 1)
+	send("Magalam", 2)
+	send("Ozgur", 3)
+}
