@@ -26,3 +26,10 @@ func maxMessages(thresh float64) int {
 		}
 	}
 }
+
+func testMaxMessages(thresh float64) {
+	fmt.Printf("Threshold: %v", thresh)
+	cost := maxMessages(thresh)
+	fmt.Printf("Maximum messages that can be sent: = %v\n", cost)
+	fmt.Println("================================")
+}
